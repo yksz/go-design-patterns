@@ -19,13 +19,16 @@ type Adapter struct {
 	adaptee *Adaptee
 }
 
+func NewAdapter() *Adapter {
+	return &Adapter{new(Adaptee)}
+}
+
 func (a *Adapter) RequiredMethod() {
 	fmt.Println("Adapter.RequiredMethod()")
 	a.adaptee.OldMethod()
 }
 
 func main() {
-	adaptee := new(Adaptee)
-	target := &Adapter{adaptee}
+	target := NewAdapter()
 	target.RequiredMethod()
 }
