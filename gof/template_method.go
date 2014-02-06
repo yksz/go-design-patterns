@@ -8,9 +8,9 @@ type AbstractClass struct {
 	template template
 }
 
-func (a *AbstractClass) TemplateMethod() {
-	a.template.method1()
-	a.template.method2()
+func (c *AbstractClass) TemplateMethod() {
+	c.template.method1()
+	c.template.method2()
 }
 
 type template interface {
@@ -18,8 +18,7 @@ type template interface {
 	method2()
 }
 
-type ConcreteClass struct {
-}
+type ConcreteClass struct{}
 
 func (c *ConcreteClass) method1() {
 	fmt.Println("ConcreteClass.method1()")

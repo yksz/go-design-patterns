@@ -31,7 +31,7 @@ type Product interface {
 type ConcreteProduct struct {
 }
 
-func (c *ConcreteProduct) method() {
+func (p *ConcreteProduct) method() {
 	fmt.Println("ConcreteProduct.method()")
 }
 

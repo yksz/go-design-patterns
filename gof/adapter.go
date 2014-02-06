@@ -4,11 +4,10 @@ import (
 	"fmt"
 )
 
-type Adaptee struct {
-}
+type Adaptee struct{}
 
 func (a *Adaptee) OldMethod() {
-	fmt.Println("+- Adaptee.OldMethod()")
+	fmt.Println("Adaptee.OldMethod()")
 }
 
 type Target interface {

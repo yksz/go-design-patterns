@@ -12,25 +12,23 @@ func (c *Context) Request() {
 	c.state.Handle()
 }
 
-func (c *Context) SetState(s State) {
-	c.state = s
+func (c *Context) SetState(state State) {
+	c.state = state
 }
 
 type State interface {
 	Handle()
 }
 
-type ConcreteStateA struct {
-}
+type ConcreteStateA struct{}
 
-func (c *ConcreteStateA) Handle() {
+func (s *ConcreteStateA) Handle() {
 	fmt.Println("ConcreteStateA.Handle()")
 }
 
-type ConcreteStateB struct {
-}
+type ConcreteStateB struct{}
 
-func (c *ConcreteStateB) Handle() {
+func (s *ConcreteStateB) Handle() {
 	fmt.Println("ConcreteStateB.Handle()")
 }
 

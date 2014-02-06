@@ -8,20 +8,18 @@ type Element interface {
 	Accept(Visitor)
 }
 
-type ConcreteElementA struct {
-}
+type ConcreteElementA struct{}
 
-func (c *ConcreteElementA) Accept(visitor Visitor) {
+func (e *ConcreteElementA) Accept(visitor Visitor) {
 	fmt.Println("ConcreteElementA.Accept()")
-	visitor.VisitA(c)
+	visitor.VisitA(e)
 }
 
-type ConcreteElementB struct {
-}
+type ConcreteElementB struct{}
 
-func (c *ConcreteElementB) Accept(visitor Visitor) {
+func (e *ConcreteElementB) Accept(visitor Visitor) {
 	fmt.Println("ConcreteElementB.Accept()")
-	visitor.VisitB(c)
+	visitor.VisitB(e)
 }
 
 type Visitor interface {
@@ -32,11 +30,11 @@ type Visitor interface {
 type ConcreteVisitor struct {
 }
 
-func (c *ConcreteVisitor) VisitA(element *ConcreteElementA) {
+func (v *ConcreteVisitor) VisitA(element *ConcreteElementA) {
 	fmt.Println("ConcreteVisitor.VisitA()")
 }
 
-func (c *ConcreteVisitor) VisitB(element *ConcreteElementB) {
+func (v *ConcreteVisitor) VisitB(element *ConcreteElementB) {
 	fmt.Println("ConcreteVisitor.VisitB()")
 }
 

@@ -8,11 +8,10 @@ type Subject interface {
 	DoAction()
 }
 
-type RealSubject struct {
-}
+type RealSubject struct{}
 
-func (r *RealSubject) DoAction() {
-	fmt.Println("+- RealSubject.DoAction()")
+func (s *RealSubject) DoAction() {
+	fmt.Println("RealSubject.DoAction()")
 }
 
 type Proxy struct {

@@ -17,13 +17,13 @@ func NewSubject() *Subject {
 	return &Subject{list.New()}
 }
 
-func (s *Subject) RegisterObserver(o Observer) {
-	s.observerCollection.PushBack(o)
+func (s *Subject) RegisterObserver(observer Observer) {
+	s.observerCollection.PushBack(observer)
 }
 
-func (s *Subject) UnregisterObserver(o Observer) {
+func (s *Subject) UnregisterObserver(observer Observer) {
 	for e := s.observerCollection.Front(); e != nil; e = e.Next() {
-		if o == e.Value.(Observer) {
+		if observer == e.Value.(Observer) {
 			s.observerCollection.Remove(e)
 		}
 	}
@@ -36,8 +36,7 @@ func (s *Subject) NotifyObservers() {
 	}
 }
 
-type ConcreteObserver struct {
-}
+type ConcreteObserver struct{}
 
 func (c *ConcreteObserver) Notify() {
 	fmt.Println("ConcreteObserver.Notify()")
@@ -45,7 +44,6 @@ func (c *ConcreteObserver) Notify() {
 
 func main() {
 	concreteObserver := new(ConcreteObserver)
-
 	subject := NewSubject()
 	subject.RegisterObserver(concreteObserver)
 	subject.NotifyObservers()

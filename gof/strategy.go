@@ -12,8 +12,8 @@ func (c *Context) Execute() {
 	c.strategy()
 }
 
-func (c *Context) SetStrategy(s func()) {
-	c.strategy = s
+func (c *Context) SetStrategy(strategy func()) {
+	c.strategy = strategy
 }
 
 func main() {

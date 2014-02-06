@@ -38,16 +38,16 @@ func NewAppleBuilder() *AppleBuilder {
 	return &AppleBuilder{new(Product)}
 }
 
-func (a *AppleBuilder) SetName() {
-	a.product.name = "apple"
+func (b *AppleBuilder) SetName() {
+	b.product.name = "apple"
 }
 
-func (a *AppleBuilder) SetPrice() {
-	a.product.price = 10
+func (b *AppleBuilder) SetPrice() {
+	b.product.price = 10
 }
 
-func (a *AppleBuilder) GetResult() *Product {
-	return a.product
+func (b *AppleBuilder) GetResult() *Product {
+	return b.product
 }
 
 type OrangeBuilder struct {
@@ -58,16 +58,16 @@ func NewOrangeBuilder() *OrangeBuilder {
 	return &OrangeBuilder{new(Product)}
 }
 
-func (o *OrangeBuilder) SetName() {
-	o.product.name = "orange"
+func (b *OrangeBuilder) SetName() {
+	b.product.name = "orange"
 }
 
-func (o *OrangeBuilder) SetPrice() {
-	o.product.price = 20
+func (b *OrangeBuilder) SetPrice() {
+	b.product.price = 20
 }
 
-func (o *OrangeBuilder) GetResult() *Product {
-	return o.product
+func (b *OrangeBuilder) GetResult() *Product {
+	return b.product
 }
 
 func main() {

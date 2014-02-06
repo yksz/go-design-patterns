@@ -32,7 +32,7 @@ func (m *Memory) Load(position int, data []byte) {
 
 type HardDrive struct{}
 
-func (h *HardDrive) Read(lba int, size int) []byte {
+func (hd *HardDrive) Read(lba int, size int) []byte {
 	fmt.Println("HardDrive.Read()")
 	return make([]byte, 0)
 }
@@ -46,6 +46,7 @@ type ComputerFacade struct {
 func NewComputerFacade() *ComputerFacade {
 	return &ComputerFacade{new(CPU), new(Memory), new(HardDrive)}
 }
+
 func (c *ComputerFacade) start() {
 	c.processor.Freeze()
 	c.ram.Load(BOOT_ADDRESS, c.hd.Read(BOOT_SECTOR, SECTOR_SIZE))

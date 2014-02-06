@@ -8,17 +8,15 @@ type DrawingAPI interface {
 	DrawCircle(x, y, radius float32)
 }
 
-type DrawingAPI1 struct {
-}
+type DrawingAPI1 struct{}
 
-func (d *DrawingAPI1) DrawCircle(x, y, radius float32) {
+func (a *DrawingAPI1) DrawCircle(x, y, radius float32) {
 	fmt.Printf("API1.circle at %f:%f radius %f\n", x, y, radius)
 }
 
-type DrawingAPI2 struct {
-}
+type DrawingAPI2 struct{}
 
-func (d *DrawingAPI2) DrawCircle(x, y, radius float32) {
+func (a *DrawingAPI2) DrawCircle(x, y, radius float32) {
 	fmt.Printf("API2.circle at %f:%f radius %f\n", x, y, radius)
 }
 
@@ -32,12 +30,12 @@ type CircleShape struct {
 	drawingAPI   DrawingAPI
 }
 
-func (c *CircleShape) Draw() {
-	c.drawingAPI.DrawCircle(c.x, c.y, c.radius)
+func (s *CircleShape) Draw() {
+	s.drawingAPI.DrawCircle(s.x, s.y, s.radius)
 }
 
-func (c *CircleShape) ResizeByPercentage(pct float32) {
-	c.radius *= pct
+func (s *CircleShape) ResizeByPercentage(pct float32) {
+	s.radius *= pct
 }
 
 func main() {

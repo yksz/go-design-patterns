@@ -12,12 +12,12 @@ type ConcretePrototype struct {
 	name string
 }
 
-func (c *ConcretePrototype) Clone() *ConcretePrototype {
-	return &ConcretePrototype{c.name}
+func (p *ConcretePrototype) Clone() *ConcretePrototype {
+	return &ConcretePrototype{p.name}
 }
 
-func (c *ConcretePrototype) String() string {
-	return "ConcretePrototype [name=" + c.name + "]"
+func (p *ConcretePrototype) String() string {
+	return "ConcretePrototype [name=" + p.name + "]"
 }
 
 func main() {

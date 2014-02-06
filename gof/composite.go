@@ -65,7 +65,6 @@ func main() {
 	home := &Directory{name: "home"}
 	user1 := &Directory{name: "user1"}
 	file1 := &File{name: "file1"}
-
 	root.Add(usr)
 	usr.Add(local)
 	root.Add(home)
