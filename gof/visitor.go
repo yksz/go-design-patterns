@@ -27,8 +27,7 @@ type Visitor interface {
 	VisitB(*ConcreteElementB)
 }
 
-type ConcreteVisitor struct {
-}
+type ConcreteVisitor struct{}
 
 func (v *ConcreteVisitor) VisitA(element *ConcreteElementA) {
 	fmt.Println("ConcreteVisitor.VisitA()")

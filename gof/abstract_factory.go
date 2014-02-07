@@ -31,26 +31,21 @@ func (f *ConcreteFactory2) CreateProductB() AbstractProductB {
 }
 
 type AbstractProductA interface{}
-
 type AbstractProductB interface{}
-
 type ProductA1 struct{}
-
 type ProductA2 struct{}
-
 type ProductB1 struct{}
-
 type ProductB2 struct{}
 
 func main() {
 	factory1 := new(ConcreteFactory1)
+	factory2 := new(ConcreteFactory2)
 	productA1 := factory1.CreateProductA()
 	productB1 := factory1.CreateProductB()
-	fmt.Println(reflect.TypeOf(productA1))
-	fmt.Println(reflect.TypeOf(productB1))
-	factory2 := new(ConcreteFactory2)
 	productA2 := factory2.CreateProductA()
 	productB2 := factory2.CreateProductB()
+	fmt.Println(reflect.TypeOf(productA1))
+	fmt.Println(reflect.TypeOf(productB1))
 	fmt.Println(reflect.TypeOf(productA2))
 	fmt.Println(reflect.TypeOf(productB2))
 }
