@@ -43,10 +43,10 @@ func (c *ConcreteObserver) Notify() {
 }
 
 func main() {
-	concreteObserver := new(ConcreteObserver)
+	observer := new(ConcreteObserver)
 	subject := NewSubject()
-	subject.RegisterObserver(concreteObserver)
+	subject.RegisterObserver(observer)
 	subject.NotifyObservers()
-	subject.UnregisterObserver(concreteObserver)
+	subject.UnregisterObserver(observer)
 	subject.NotifyObservers()
 }

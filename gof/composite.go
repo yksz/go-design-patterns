@@ -41,13 +41,13 @@ func (d *Directory) Add(component Component) {
 func (d *Directory) Remove(component Component) {
 	for i, v := range d.components {
 		if v == component {
-			d.delete(i)
+			d.remove(i)
 			return
 		}
 	}
 }
 
-func (d *Directory) delete(i int) {
+func (d *Directory) remove(i int) {
 	reslice := append(d.components[:i], d.components[i+1:]...)
 	newslice := make([]Component, len(reslice))
 	copy(newslice, reslice)
