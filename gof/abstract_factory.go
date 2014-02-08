@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"reflect"
 )
 
 type AbstractFactory interface {
@@ -44,8 +43,8 @@ func main() {
 	productB1 := factory1.CreateProductB()
 	productA2 := factory2.CreateProductA()
 	productB2 := factory2.CreateProductB()
-	fmt.Println(reflect.TypeOf(productA1))
-	fmt.Println(reflect.TypeOf(productB1))
-	fmt.Println(reflect.TypeOf(productA2))
-	fmt.Println(reflect.TypeOf(productB2))
+	fmt.Printf("%T\n", productA1)
+	fmt.Printf("%T\n", productB1)
+	fmt.Printf("%T\n", productA2)
+	fmt.Printf("%T\n", productB2)
 }
