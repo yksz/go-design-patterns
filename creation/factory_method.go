@@ -17,8 +17,7 @@ type factory interface {
 	factoryMethod() Product
 }
 
-type ConcreteCreator struct {
-}
+type ConcreteCreator struct{}
 
 func (c *ConcreteCreator) factoryMethod() Product {
 	return new(ConcreteProduct)
@@ -28,8 +27,7 @@ type Product interface {
 	method()
 }
 
-type ConcreteProduct struct {
-}
+type ConcreteProduct struct{}
 
 func (p *ConcreteProduct) method() {
 	fmt.Println("ConcreteProduct.method()")
