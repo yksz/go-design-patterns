@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"log"
 	"time"
 )
 
@@ -20,12 +20,12 @@ func (e *Executor) Submit(fn func() string) Future {
 
 func main() {
 	task := func() string {
-		fmt.Println("Task: Now processing...")
+		log.Println("Task: Now processing...")
 		time.Sleep(2 * time.Second)
-		fmt.Println("Task: Process is completed.")
+		log.Println("Task: Process is completed.")
 		return "Task has finished!"
 	}
 	executor := new(Executor)
 	future := executor.Submit(task)
-	fmt.Printf("Future result: %s\n", <-future)
+	log.Printf("Future result: %s\n", <-future)
 }
