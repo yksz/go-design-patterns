@@ -25,6 +25,7 @@ func (s *Subject) UnregisterObserver(observer Observer) {
 	for e := s.observerCollection.Front(); e != nil; e = e.Next() {
 		if observer == e.Value.(Observer) {
 			s.observerCollection.Remove(e)
+			return
 		}
 	}
 }
