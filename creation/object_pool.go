@@ -4,6 +4,7 @@ import (
 	"container/list"
 	"fmt"
 	"strconv"
+	"sync"
 )
 
 var (
@@ -19,6 +20,7 @@ func (o *PooledObject) String() string {
 }
 
 type ObjectPool struct {
+	mu     sync.Mutex
 	idle   *list.List
 	active *list.List
 }
@@ -26,10 +28,13 @@ type ObjectPool struct {
 func NewObjectPool() *ObjectPool {
 	idle := list.New()
 	active := list.New()
-	return &ObjectPool{idle, active}
+	return &ObjectPool{idle: idle, active: active}
 }
 
 func (p *ObjectPool) BorrowObject() *PooledObject {
+	p.mu.Lock()
+	defer p.mu.Unlock()
+
 	var object *PooledObject
 	if p.idle.Len() <= 0 {
 		object = &PooledObject{uniqueID}
@@ -43,6 +48,9 @@ func (p *ObjectPool) BorrowObject() *PooledObject {
 }
 
 func (p *ObjectPool) ReturnObject(object *PooledObject) {
+	p.mu.Lock()
+	defer p.mu.Unlock()
+
 	fmt.Printf("Return: %s\n", object)
 	p.idle.PushBack(object)
 	p.remove(p.active, object)
