@@ -1,15 +1,13 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 type Context struct {
 	state State
 }
 
 func (c *Context) Request() {
-	c.state.Handle()
+	c.state.Handle(c)
 }
 
 func (c *Context) SetState(state State) {
@@ -17,24 +15,27 @@ func (c *Context) SetState(state State) {
 }
 
 type State interface {
-	Handle()
+	Handle(*Context)
 }
 
 type ConcreteStateA struct{}
 
-func (s *ConcreteStateA) Handle() {
+func (s *ConcreteStateA) Handle(ctx *Context) {
 	fmt.Println("ConcreteStateA.Handle()")
+	ctx.SetState(new(ConcreteStateB))
 }
 
 type ConcreteStateB struct{}
 
-func (s *ConcreteStateB) Handle() {
+func (s *ConcreteStateB) Handle(ctx *Context) {
 	fmt.Println("ConcreteStateB.Handle()")
+	ctx.SetState(new(ConcreteStateA))
 }
 
 func main() {
 	context := Context{new(ConcreteStateA)}
 	context.Request()
-	context.SetState(new(ConcreteStateB))
+	context.Request()
+	context.Request()
 	context.Request()
 }
